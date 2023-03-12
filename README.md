@@ -1,5 +1,10 @@
 # pytorch-supporter
 
+https://pypi.org/project/pytorch-supporter
+<pre>
+pip install pytorch-supporter
+</pre>
+
 Supported layers
 
 <pre>
