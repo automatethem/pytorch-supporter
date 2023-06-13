@@ -10,12 +10,11 @@ class LazilyInitializedLinear(torch.nn.Module):
         if not self.layer:
             in_features = x.shape[1]
             self.layer = torch.nn.Linear(in_features=in_features, out_features=self.out_features)
-            if x.is_cuda:
-                device = "cpu"
-                if torch.cuda.is_available():
-                    device = "cuda"
-                elif torch.backends.mps.is_available():
-                    device = "mps"
-                self.layer = self.layer.to(device)
+            device = "cpu"
+            if torch.cuda.is_available():
+                device = "cuda"
+            elif torch.backends.mps.is_available():
+                device = "mps"
+            self.layer = self.layer.to(device)
         x = self.layer(x)
         return x
