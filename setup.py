@@ -7,7 +7,7 @@ def requirements():
 
 setuptools.setup(
 	name='pytorch-supporter',
-	version='0.0.17',
+	version='0.0.18',
 	description='Pytorch supporter',
 	long_description=open('README.md').read(),
 	long_description_content_type='text/markdown',
