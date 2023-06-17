@@ -20,7 +20,7 @@ class HiddenStateResetLSTM(torch.nn.Module):
         elif torch.backends.mps.is_available():
             device = "mps"
         '''
-        hidden_state = hidden_state.to(self.layer.device)
-        cell_state = cell_state.to(self.layer.device)
+        hidden_state = hidden_state.to(x.device)
+        cell_state = cell_state.to(x.device)
         x = self.layer(x, hx=(hidden_state, cell_state), **kwargs)
         return x
