@@ -13,5 +13,12 @@ class HiddenStateResetLSTM(torch.nn.Module):
         batch_length = len(x)
         hidden_state = torch.zeros(self.num_layers, batch_length, self.hidden_size)
         cell_state = torch.zeros(self.num_layers, batch_length, self.hidden_size)
+        device = "cpu"
+        if torch.cuda.is_available():
+            device = "cuda"
+        elif torch.backends.mps.is_available():
+            device = "mps"
+        hidden_state = hidden_state.to(device)
+        cell_state = cell_state.to(device)
         x = self.layer(x, hx=(hidden_state, cell_state), **kwargs)
         return x
