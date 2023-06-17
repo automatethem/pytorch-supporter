@@ -18,6 +18,6 @@ class LazilyInitializedLinear(torch.nn.Module):
                 device = "mps"
             self.layer = self.layer.to(device)
             '''
-            self.layer = self.device
+            self.layer = self.layer.to(x.device)
         x = self.layer(x)
         return x
